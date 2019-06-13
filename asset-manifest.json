@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/timezone-clock/static/css/main.eb60c1d9.chunk.css",
+    "main.js": "/timezone-clock/static/js/main.0fe07849.chunk.js",
+    "main.js.map": "/timezone-clock/static/js/main.0fe07849.chunk.js.map",
+    "runtime~main.js": "/timezone-clock/static/js/runtime~main.5514a54c.js",
+    "runtime~main.js.map": "/timezone-clock/static/js/runtime~main.5514a54c.js.map",
+    "static/js/2.c2695c00.chunk.js": "/timezone-clock/static/js/2.c2695c00.chunk.js",
+    "static/js/2.c2695c00.chunk.js.map": "/timezone-clock/static/js/2.c2695c00.chunk.js.map",
+    "index.html": "/timezone-clock/index.html",
+    "precache-manifest.223d8b5dec3d10242ed2175998d75e6f.js": "/timezone-clock/precache-manifest.223d8b5dec3d10242ed2175998d75e6f.js",
+    "service-worker.js": "/timezone-clock/service-worker.js",
+    "static/css/main.eb60c1d9.chunk.css.map": "/timezone-clock/static/css/main.eb60c1d9.chunk.css.map"
+  }
+}

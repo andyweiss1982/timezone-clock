@@ -11,28 +11,37 @@ const TimeZoneProvider = props => {
     () => {
       fetch('http://api.timezonedb.com/v2.1/list-time-zone?key=02GNRRUJEWYG&format=json')
         .then(response => response.json())
-        .then(data => setAllTimeZones(data.zones.filter(zone => (
-          !zone.zoneName.startsWith("Antarctica")
-        ))))
+        .then(({zones}) => {
+          setAllTimeZones(
+            zones.filter(zone => !zone.zoneName.startsWith("Antarctica"))
+            .map(zone => zone.zoneName)
+          )
+        })
     },
     []
   )
 
   const getTimeZones = query => {
     if (!query) return []
-    return allTimeZones.filter(zone => (
-      new RegExp(query, 'i').test(zone.zoneName)
+    let matches = allTimeZones.filter(zone => (
+      formatName(zone).toLowerCase().startsWith(query.toLowerCase())
     ))
+    matches.sort((a, b) => {
+      if (formatName(a) < formatName(b)) return -1
+      if (formatName(b) > formatName(a)) return 1
+      return 0
+    })
+    return matches
   }
 
-  const formatTimeZoneName = zoneName => {
-    const zoneNameSegments = zoneName.split("/")
-    const placeName = zoneNameSegments[zoneNameSegments.length - 1].replace("_", " ")
+  const formatName = timeZone => {
+    const zoneNameSegments = timeZone.split("/")
+    const city = zoneNameSegments.slice(-1)[0].split("_").join(" ")
     const region = zoneNameSegments[0]
-    return `${placeName} (${region})`
+    return `${city} (${region})`
   }
 
-  const data = { timeZone, setTimeZone, getTimeZones, formatTimeZoneName }
+  const data = { timeZone, setTimeZone, getTimeZones, formatName }
 
   return(
     <TimeZoneContext.Provider value={data}>

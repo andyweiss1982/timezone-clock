@@ -1,21 +1,32 @@
 import React, { useContext } from 'react'
 import { TimeContext } from '../contexts/TimeContext'
 import { TimeZoneContext } from '../contexts/TimeZoneContext'
-import TimeZonePicker from './TimeZonePicker'
 
 const Clock = () => {
   const { time } = useContext(TimeContext)
-  const { timeZone, formatTimeZoneName } = useContext(TimeZoneContext)
-  console.log(timeZone)
+  const { timeZone, formatName } = useContext(TimeZoneContext)
   return(
     <main>
-      <div>
-        { formatTimeZoneName(timeZone) }
+      <div id="current-date">
+        {
+          time.toLocaleDateString(
+            "en-US",
+            {
+              weekday: 'long',
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+              timeZone
+            }
+          )
+        }
       </div>
-      <div>
+      <div id="current-time">
         { time.toLocaleTimeString("en-US", { timeZone }) }
       </div>
-      <TimeZonePicker/>
+      <div id="current-zone">
+        { formatName(timeZone) }
+      </div>
     </main>
   )
 }

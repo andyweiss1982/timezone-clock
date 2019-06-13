@@ -9,7 +9,7 @@ const TimeZoneProvider = props => {
 
   useEffect(
     () => {
-      fetch('http://api.timezonedb.com/v2.1/list-time-zone?key=02GNRRUJEWYG&format=json')
+      fetch('https://api.timezonedb.com/v2.1/list-time-zone?key=02GNRRUJEWYG&format=json')
         .then(response => response.json())
         .then(({zones}) => {
           setAllTimeZones(
